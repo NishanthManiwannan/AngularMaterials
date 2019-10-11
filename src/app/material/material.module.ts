@@ -1,10 +1,22 @@
 import { NgModule } from '@angular/core';
-import { MatButtonModule, 
+import { MatFormFieldModule,
+         MatButtonModule, 
          MatButtonToggleModule,
          MatIconModule,
          MatProgressSpinnerModule,
          MatToolbarModule,
-         MatSidenavModule
+         MatSidenavModule,
+         MatMenuModule,
+         MatListModule,
+         MatGridListModule,
+         MatAutocompleteModule,
+         MatExpansionModule,
+         MatCardModule,
+         MatDatepickerModule,
+         MatNativeDateModule,
+         MatTooltipModule,
+         MatSnackBarModule,
+         MatTableModule
 } from '@angular/material'
 
 import {MatBadgeModule} from '@angular/material/badge'
@@ -16,7 +28,25 @@ const material = [
   MatBadgeModule,
   MatProgressSpinnerModule,
   MatToolbarModule,
-  MatSidenavModule
+  MatSidenavModule,
+
+  MatMenuModule,
+  MatListModule,
+  MatGridListModule,
+  MatExpansionModule,
+  MatCardModule,
+  
+  MatFormFieldModule,
+  MatAutocompleteModule,
+
+  MatDatepickerModule,
+  MatNativeDateModule,
+
+  MatTooltipModule,
+
+  MatSnackBarModule,
+
+  MatTableModule
 ];
 
 @NgModule({

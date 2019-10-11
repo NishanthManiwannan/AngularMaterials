@@ -1,26 +1,142 @@
 
-<!-- <mat-icon style="color: hsl(90, 100%, 50%)">aspect_ratio
-</mat-icon>
+<!-- <h3>Basic Buttons</h3>
+<div class="example-button-row">
+  <button mat-button>Basic</button>
+  <button mat-button color="primary">Primary</button>
+  <button mat-button color="accent">Accent</button>
+  <button mat-button color="warn">Warn</button>
+  <button mat-button disabled>Disabled</button>
+  <a mat-button routerLink=".">Link</a>
+</div> -->
 
--------------------------- Notification ----------------------
-<div>
+<!-- <mat-icon style="color: hsl(90, 100%, 50%)">aspect_ratio
+</mat-icon>-->
+
+<!------------------------------- Notification --------------------------->
+<!--<div>
     <span  [matBadge]="5">Like</span>
 </div>
 
 <mat-progress-spinner value="40"></mat-progress-spinner>
 <mat-spinner></mat-spinner> -->
 
-<!--------------------------- Tool bar -------------------------------------->
+<!--------------------------- Tool bar ----------------------------------->
 <!-- <div>
     <mat-toolbar style="background-color: cornflowerblue">
         <span>Code</span>
     </mat-toolbar>
 </div> -->
 
-
-<mat-sidenav-container>
-    <mat-sidenav mode="side" [(opened)]="opened">Sidenav</mat-sidenav>
+<!-- -------------------- Side Navigation -------------------------------->
+<!--<mat-sidenav-container>
+    <mat-sidenav #sidenav (opened)="log('Opened')" (closed)="log('Closed')" mode="side" 
+    [(opened)]="opened">Sidenav</mat-sidenav>
     <mat-sidenav-content>Main
-        <button mat-raised-button color="accent" (click)="opened = !opened">Side nav</button>
+        <button mat-raised-button color="primary" (click)="opened = !opened">Side nav
+            <mat-icon>code</mat-icon>
+        </button>
+        
+        <button mat-raised-button color="accent" (click)="sidenav.open()">Side nav
+            <mat-icon>code</mat-icon>
+        </button>
+        <button mat-raised-button color="accent" (click)="sidenav.close()">Side nav
+            <mat-icon>code</mat-icon>
+        </button>
+        <button mat-raised-button color="accent" (click)="sidenav.toggle()">Side nav
+            <mat-icon>code</mat-icon>
+        </button>
     </mat-sidenav-content>
-</mat-sidenav-container>
+</mat-sidenav-container> -->
+
+<!------------------------ tile layouts----------------------------------->
+<!--<mat-grid-list cols="3" rowHeight="100px">
+    <mat-grid-tile rowspan="2">tile 1</mat-grid-tile>
+    <mat-grid-tile>tile 1</mat-grid-tile>
+    <mat-grid-tile>tile 1</mat-grid-tile>
+    <mat-grid-tile>tile 1</mat-grid-tile>
+</mat-grid-list> -->
+
+<!---------------------------- Auto Complete ----------------------------->
+<!-- <form action="">
+    <mat-form-field>
+        <input type="text" matInput [matAutocomplete]="auto" />
+        <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor='let option of options' [value]="option">
+        <mat-option *ngFor='let option of objectOptions' [value]="option">
+            {{option.name}}
+        </mat-option>
+    </mat-autocomplete>
+    </mat-form-field>
+</form> -->
+
+<!----------------------------- Date Picker ------------------------------>
+<!-- <mat-form-field>
+    <input matInput [matDatepicker]="myDatePicker">
+    <mat-datepicker-toggle [for]="myDatePicker" matSuffix></mat-datepicker-toggle>
+    <mat-datepicker #myDatePicker startView="mult"></mat-datepicker>
+</mat-form-field> -->
+
+<!-- <form>
+  <mat-form-field class="example-full-width">
+    <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+    <mat-datepicker-toggle matSuffix [for]="picker">
+      <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+    </mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+</form> -->
+
+<!------------------------- Tool Tip ------------------------------------>
+<!-- <button
+ mat-raised-button
+ matTooltip="welcome" 
+ matTooltipPosition="after"
+ matTooltipShowDelay="600"
+ matTooltipHideDelay="600"
+ >Hello</button> -->
+
+ <!-------------------------- Snack Bar ---------------------------->
+ <!-- <button  mat-raised-button (click)="openSnackBar('Item deleted', 'Dismiss')">Show Bar</button>
+ <button  mat-raised-button (click)="openSnackBar('Item deleted', 'undo')">Delete</button>
+
+ <button  
+    mat-raised-button 
+    (click)="openCus()"
+    >Show Custom SnackBar</button> -->
+
+<!-------------------------- TABLE --------------------------------->
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+      
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef> No. </th>
+          <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+        </ng-container>
+      
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+      
+        <!-- Weight Column -->
+        <ng-container matColumnDef="weight">
+          <th mat-header-cell *matHeaderCellDef> Weight </th>
+          <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+        </ng-container>
+      
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="symbol">
+          <th mat-header-cell *matHeaderCellDef> Symbol </th>
+          <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      
+      
