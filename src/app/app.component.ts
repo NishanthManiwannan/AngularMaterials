@@ -1,5 +1,9 @@
-import { Component } from '@angular/core';
-import { MatSnackBar } from '@angular/material';
+import { Component, ViewChild, OnInit} from '@angular/core';
+import { MatSnackBar,
+         MatTableDataSource,
+         MatSort,
+         MatPaginator
+         } from '@angular/material';
 
 export interface PeriodicElement {
   name: string;
@@ -26,20 +30,51 @@ const ELEMENT_DATA: PeriodicElement[] = [
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = ELEMENT_DATA;
+  // dataSource = ELEMENT_DATA;
 
-  
-  title = 'material-demo';
+  //=================== Table =================================
+  dataSource = new MatTableDataSource(ELEMENT_DATA);
+
+   //sorting
+   @ViewChild(MatSort, null) sort : MatSort;
+
+   //Paginator
+   @ViewChild(MatPaginator, null) paginator : MatPaginator;
+
+   ngOnInit(){
+     this.dataSource.sort = this.sort;
+     this.dataSource.paginator = this.paginator;
+   }
+
+  //Filtering
+  applyFilter(filterValue : string){
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+ 
+
+  //===========================================================
+
+  //-------------------- SCORLLING ----------------------------
+    num = [];
+
+    constructor() {
+      for(let i = 0 ; i<1000 ; i++){
+          this.num.push(i);
+      }
+    }
+  //------------------------------------------------------------
+
   opened = false;
   
   log(states){
     console.log(states)
   }
 
-  //------- AutoComplete -----------
+  //------- AutoComplete --------------------------------------------
   options : string[] = ['Angular','React','Vue'];
   objectOptions = [
     {name : 'Angular'},
@@ -48,33 +83,28 @@ export class AppComponent {
     {name : 'Vue'}
   ]
 
-  //---------- SnackBar ----------
+  //-----------------------------------------------------------
+
+  //---------- SnackBar -------------------------------------------------
   
-  constructor(private snackBar: MatSnackBar) {}
+  // constructor(private snackBar: MatSnackBar) {}
 
-  openSnackBar(message,Dissmiss){
-    let snackBarRef =  this.snackBar
-    .open(message,Dissmiss,{duration: 2000});
+  // openSnackBar(message,Dissmiss){
+  //   let snackBarRef =  this.snackBar
+  //   .open(message,Dissmiss,{duration: 2000});
 
-    snackBarRef.afterDismissed().subscribe(() => {
-      console.log("Snack bar was dismiss")
-    })
+  //   snackBarRef.afterDismissed().subscribe(() => {
+  //     console.log("Snack bar was dismiss")
+  //   })
 
-    snackBarRef.onAction().subscribe(() =>{
-      console.log("Snack bar action was dismiss")
-    })
-  }
+  //   snackBarRef.onAction().subscribe(() =>{
+  //     console.log("Snack bar action was dismiss")
+  //   })
+  // }
 
   // openCus(){
   //   this.snackBar.openFromComponent(CustomerSnackBarCom, {duration : 2000})
   // }
+
+  //------------------------------------------------------------
 }
-
-// @Component({
-//   selector: 'app-root',
-//   templateUrl: './app.component.html',
-//   styleUrls: ['./app.component.css']
-// })
-// export class CustomerSnackBarCom {
-
-// }

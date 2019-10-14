@@ -16,7 +16,9 @@ import { MatFormFieldModule,
          MatNativeDateModule,
          MatTooltipModule,
          MatSnackBarModule,
-         MatTableModule
+         MatTableModule,
+         MatSortModule,
+         MatPaginatorModule
 } from '@angular/material'
 
 import {MatBadgeModule} from '@angular/material/badge'
@@ -46,7 +48,9 @@ const material = [
 
   MatSnackBarModule,
 
-  MatTableModule
+  MatTableModule,
+  MatSortModule,
+  MatPaginatorModule
 ];
 
 @NgModule({
